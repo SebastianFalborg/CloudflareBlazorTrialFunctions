@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +8,6 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
 
 namespace CloudflareBlazorTrialFunctions
 {
@@ -23,7 +21,7 @@ namespace CloudflareBlazorTrialFunctions
         }
 
         [FunctionName("ReturnDatetime")]
-        [OpenApiOperation(operationId: "Run", tags: new[] { "datetime" })]
+        [OpenApiOperation(operationId: "ReturnDatetime", tags: new[] { "datetime" })]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(DateTime), Description = "The OK response")]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req)
